@@ -24,4 +24,17 @@ public class RestaurantControllerTest {
                 .andExpect(content().string(containsString("\"id\":1004")));
 
     }
+
+    @Test
+    void details() throws Exception {
+        mvc.perform(get("/restaurants/1"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("\"name\":\"Bobzip\"")))
+                .andExpect(content().string(containsString("\"id\":1")));
+
+        mvc.perform(get("/restaurants/2"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("\"name\":\"Soolzip\"")))
+                .andExpect(content().string(containsString("\"id\":2")));
+    }
 }
